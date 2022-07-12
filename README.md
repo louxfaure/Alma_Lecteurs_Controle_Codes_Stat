@@ -6,7 +6,8 @@ Pour une date donnée (paramètre DATE_TO_FILES_TO_DL), le programme va téléch
  -  L'institution d'origine : UB, UBM, INP, IEP , BXSA
  - La population concernée : Etudiants, Personnels ou hebergés
  - Le code statistique
- -  La catégorie statistique
+ - La description provisoire
+ - La catégorie statistique
 
 Le nom est le chemin d'accès au fichier dépendent de la variable **OUT_FILE**
 
@@ -14,3 +15,5 @@ Le nom est le chemin d'accès au fichier dépendent de la variable **OUT_FILE**
 1. Télécharger ou cloner le contenu de ce répertoire.
 2. Installer les modules externes
 3. Modifier les paramètres du programme au début du fichier [main.py](main.py) 
+4. Exécuter le programme
+5. C'est prêt

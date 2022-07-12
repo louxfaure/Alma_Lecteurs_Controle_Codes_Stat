@@ -70,8 +70,7 @@ for item in os.listdir(LOCAL_FILE_PATH_IN):
 # Traitement des fichiers
 
 report = open(OUT_FILE, "w")
-report.write("Institution\tPopulation\tCode stat.\tCatégorie\n")
-new_rows = []
+report.write("Institution\tPopulation\tCode stat.\tDescription\tCatégorie\n")
 unknow_codes_list = []
 compteur = 0
 for file in os.listdir(LOCAL_FILE_PATH_IN): 
@@ -86,19 +85,10 @@ for file in os.listdir(LOCAL_FILE_PATH_IN):
         statistic_category = stat.find('./statistic_category').text
         category_type = stat.find('./category_type').text
         if statistic_category not in users_codes_stats.alma_codes_stat_list and statistic_category not in unknow_codes_list :
-            new_row = {
-                "code": statistic_category,
-                "description": "{} - Description à renseigner",
-                "default": False,
-                "enabled": True,
-                "updated_by": "",
-                "update_date": ""
-            }
+            description = "{} - Description à renseigner".format(statistic_category)
             compteur =+ 1
-            new_rows.append(new_row)
             unknow_codes_list.append(statistic_category)
             report.write("{}\t{}\t{}\t{}\n".format(institution,population,statistic_category,category_type))
-            logger.info("{} :: {} :: {} :: {}".format(institution,population,statistic_category,category_type))
-users_codes_stats.codes_stats['row'].extend(new_rows)
+            logger.info("{} :: {} :: {} :: {}".format(institution,population,statistic_category,description,category_type))
 logger.info("Traitement terminé. {} codes à ajouter dans la table UserStatsCategories")
 report.close
